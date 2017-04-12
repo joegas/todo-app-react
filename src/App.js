@@ -1,19 +1,33 @@
 import React, { Component } from 'react';
 import logo from './logo.svg';
 import './App.css';
+import List from './components/List.js';
+
 
 class App extends Component {
+  constructor(){
+    super();
+    this.state = {
+      tickets: []
+    }
+  }
+
+  componentDidMount() {
+    this.setState({
+      tickets: ["Example1", "Example2", "Example3", "Example4"]
+    });
+  }
+
+  componentWillUnmount() {
+    this.setState({
+      tickets: []
+    });
+  }
+  
+  
   render() {
     return (
-      <div className="App">
-        <div className="App-header">
-          <img src={logo} className="App-logo" alt="logo" />
-          <h2>Welcome to React</h2>
-        </div>
-        <p className="App-intro">
-          To get started, edit <code>src/App.js</code> and save to reload.
-        </p>
-      </div>
+      <List listItems={this.state.tickets} />
     );
   }
 }
