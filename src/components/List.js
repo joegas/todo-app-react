@@ -3,9 +3,11 @@ import React, { Component } from 'react';
 class List extends Component {
     render() {
         return (
-            <div>
-                
-            </div>
+            <ul>
+            {this.props.listItems.map(item => (
+                <li key={item.id}>{item.text}</li>
+            ))}
+            </ul>
         );
     }
 }
