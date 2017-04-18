@@ -24,7 +24,8 @@ class Form extends Component {
 
     handleSubmit(e) {
       e.preventDefault();
-      this.props.callbackParent(this.state.text)
+      this.props.callbackParent(this.state.text);
+      this.state.text = ""
     }
 }
 
