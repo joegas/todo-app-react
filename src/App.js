@@ -6,9 +6,9 @@ import uuid from 'uuid';
 // ÜBUNG 2
 //
 // 1. Erstelle im constructor einen State mit einem Feld (z.B. todos), das ein vorerst leeres Array beinhaltet
-// 2. Dieses Array soll nun in der Methode componentDidMount() gefüllt werden. Dafür kannst das Array verwenden, 
+// 2. Dieses Array soll nun in der Methode componentDidMount() gefüllt werden. Dafür kannst das Array verwenden,
 //    das du bereits in der List Komponente erstellt hast.
-// 3. Übergebe dieses Array als prop an die List Komponente. 
+// 3. Übergebe dieses Array als prop an die List Komponente.
 //    Die List Komponente muss zudem angepasst werden (props empfangen und den state dort entfernen).
 
 
@@ -17,40 +17,39 @@ class App extends Component {
     super();
     this.onChildChanged = this.onChildChanged.bind(this);
     this.state = {
-      tickets: []
+      todos: []
     }
   }
 
   onChildChanged(newItem) {
     this.setState((prevState) => ({
-      tickets: prevState.tickets.concat(
+      tickets: prevState.todos.concat(
         {
           id: uuid.v4(),
-          text: newItem.text
+          text: newItem
         })
     }));
   }
 
   componentDidMount() {
     this.setState({
-      tickets: [
+      todos: [
         {id: "1", text: "To Do 1"},
-        {id: "2", text: "To Do 2"},
+        {id: "2", text: "To Do 2"}
       ]
     });
   }
 
   componentWillUnmount() {
     this.setState({
-      tickets: []
+      todos: []
     });
   }
 
   render() {
     return (
       <div>
-        <List listItems={this.state.tickets} />
-        <Form callbackParent={this.onChildChanged} />
+        <List listItems={this.state.todos} />
       </div>
     );
   }
