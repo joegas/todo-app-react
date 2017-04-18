@@ -1,7 +1,6 @@
 import React, { Component } from 'react';
 import List from './components/List.js';
 import Form from './components/Form.js';
-import uuid from 'uuid';
 
 
 class App extends Component {
@@ -13,23 +12,33 @@ class App extends Component {
     }
   }
 
+  getTodos() {
+    fetch("http://todo.jecode.de/todos")
+      .then(response => response.json())
+      .then(response.json() => {
+        this.setState({
+          todos: json
+        });
+      });
+  }
+
+  postTodo(name) {
+    fetch("http://todo.jecode.de/todos", {
+      method: 'POST',
+      body: JSON.stringify({
+        'name': name
+      })
+      }).then(
+        this.getTodos()
+      );
+  }
+
   onChildChanged(newItem) {
-    this.setState((prevState) => ({
-      todos: prevState.todos.concat(
-        {
-          id: uuid.v4(),
-          text: newItem
-        })
-    }));
+    this.postTodo(newItem);
   }
 
   componentDidMount() {
-    this.setState({
-      todos: [
-        {id: "1", text: "To Do 1"},
-        {id: "2", text: "To Do 2"},
-      ]
-    });
+    this.getTodos();
   }
 
   componentWillUnmount() {
