@@ -2,7 +2,6 @@ import React, { Component } from 'react';
 import List from './components/List.js';
 import Form from './components/Form.js';
 import uuid from 'uuid';
-import logo from './logo.svg';
 
 // ÜBUNG 2
 //
