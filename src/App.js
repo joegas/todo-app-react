@@ -1,18 +1,47 @@
 import React, { Component } from 'react';
-import logo from './logo.svg';
-import './App.css';
+import List from './components/List.js';
+import Form from './components/Form.js';
+
 
 class App extends Component {
+  constructor(){
+    super();
+    this.onChildChanged = this.onChildChanged.bind(this);
+    this.state = {
+      tickets: []
+    }
+  }
+
+  onChildChanged(newItem) {
+    this.setState((prevState) => ({
+      tickets: prevState.tickets.concat(
+        {
+          id:newItem.id,
+          text: newItem.text
+        })
+    }));
+  }
+
+  componentDidMount() {
+    this.setState({
+      tickets: [
+        {id: "1", text: "Example1"},
+        {id: "2", text: "Example2"},
+      ]
+    });
+  }
+
+  componentWillUnmount() {
+    this.setState({
+      tickets: []
+    });
+  }
+
   render() {
     return (
-      <div className="App">
-        <div className="App-header">
-          <img src={logo} className="App-logo" alt="logo" />
-          <h2>Welcome to React</h2>
-        </div>
-        <p className="App-intro">
-          To get started, edit <code>src/App.js</code> and save to reload.
-        </p>
+      <div>
+        <List listItems={this.state.tickets} />
+        <Form callbackParent={this.onChildChanged} />
       </div>
     );
   }
