@@ -18,7 +18,7 @@ class App extends Component {
       todos: prevState.todos.concat(
         {
           id: uuid.v4(),
-          text: newItem.text
+          text: newItem
         })
     }));
   }
