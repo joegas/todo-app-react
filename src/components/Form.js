@@ -24,11 +24,7 @@ class Form extends Component {
 
     handleSubmit(e) {
       e.preventDefault();
-      var newItem = {
-        text: this.state.text,
-        id: Date.now()
-      };
-      this.props.callbackParent(newItem)
+      this.props.callbackParent(this.state.text)
     }
 }
 
