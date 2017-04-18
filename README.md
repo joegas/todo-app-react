@@ -5,7 +5,7 @@
 
 ## Projektinstallation
 ```
-$ git clone <this-repo>
+$ git clone https://github.com/joegas/todo-app-react
 $ npm install #(mit npm 3.x geht es auch schneller)
 $ npm start 
 ```
