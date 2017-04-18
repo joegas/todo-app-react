@@ -23,7 +23,7 @@ class App extends Component {
 
   onChildChanged(newItem) {
     this.setState((prevState) => ({
-      tickets: prevState.todos.concat(
+      todos: prevState.todos.concat(
         {
           id: uuid.v4(),
           text: newItem
