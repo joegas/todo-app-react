@@ -16,9 +16,6 @@ class App extends Component {
   constructor(){
     super();
     this.onChildChanged = this.onChildChanged.bind(this);
-    this.state = {
-      todos: []
-    }
   }
 
   onChildChanged(newItem) {
@@ -32,25 +29,16 @@ class App extends Component {
   }
 
   componentDidMount() {
-    this.setState({
-      todos: [
-        {id: "1", text: "To Do 1"},
-        {id: "2", text: "To Do 2"}
-      ]
-    });
+
   }
 
   componentWillUnmount() {
-    this.setState({
-      todos: []
-    });
+
   }
 
   render() {
     return (
-      <div>
-        <List listItems={this.state.todos} />
-      </div>
+      <List />
     );
   }
 }
