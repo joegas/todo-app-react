@@ -15,7 +15,7 @@ class App extends Component {
   getTodos() {
     fetch("http://todo.jecode.de/todos")
       .then(response => response.json())
-      .then(response.json() => {
+      .then(json => {
         this.setState({
           todos: json
         });
