@@ -38,19 +38,7 @@ class App extends Component {
 
   render() {
     return (
-      <div>
-        <div className="App">
-          <div className="App-header">
-            <img src={logo} className="App-logo" alt="logo" />
-            <h4>Welcome to React</h4>
-          </div>
-          <p className="App-intro">
-            Entwicklung von Web-Anwendungen - SS2017
-          </p>
-        </div>
-
-        <List />
-      </div>
+      <List />
     );
   }
 }
