@@ -11,8 +11,8 @@ class Form extends Component {
         return (
             <div>
               <form onSubmit={this.handleSubmit}>
-                <input onChange={this.handleChange} value={this.state.text} />
-                <button>Add</button>
+                <input type="text" onChange={this.handleChange} value={this.state.text} />
+                <button className="button-primary">Add</button>
               </form>
             </div>
         );

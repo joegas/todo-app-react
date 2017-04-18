@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import List from './components/List.js';
 import Form from './components/Form.js';
+import uuid from 'uuid';
 
 
 class App extends Component {
@@ -16,7 +17,7 @@ class App extends Component {
     this.setState((prevState) => ({
       tickets: prevState.tickets.concat(
         {
-          id:newItem.id,
+          id: uuid.v4(),
           text: newItem.text
         })
     }));
@@ -25,8 +26,8 @@ class App extends Component {
   componentDidMount() {
     this.setState({
       tickets: [
-        {id: "1", text: "Example1"},
-        {id: "2", text: "Example2"},
+        {id: "1", text: "To Do 1"},
+        {id: "2", text: "To Do 2"},
       ]
     });
   }
