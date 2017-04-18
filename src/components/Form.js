@@ -5,13 +5,12 @@ class Form extends Component {
     super(props);
     this.handleSubmit = this.handleSubmit.bind(this);
     this.handleChange = this.handleChange.bind(this);
-    this.state = {text: ""}
 }
     render() {
         return (
             <div>
-              <form onSubmit={this.handleSubmit}>
-                <input type="text" onChange={this.handleChange} value={this.state.text} />
+              <form>
+                <input type="text" />
                 <button className="button-primary">Add</button>
               </form>
             </div>
@@ -19,16 +18,12 @@ class Form extends Component {
     }
 
     handleChange(e) {
-      this.setState({text: e.target.value});
+      // Zugriff auf Value des Input Fields mit "e.target.value"
     }
 
     handleSubmit(e) {
-      e.preventDefault();
-      var newItem = {
-        text: this.state.text,
-        id: Date.now()
-      };
-      this.props.callbackParent(newItem)
+      e.preventDefault(); // Neuladen der Seite verhindern
+      this.props.callbackParent(this.state.text)
     }
 }
 
