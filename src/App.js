@@ -9,13 +9,13 @@ class App extends Component {
     super();
     this.onChildChanged = this.onChildChanged.bind(this);
     this.state = {
-      tickets: []
+      todos: []
     }
   }
 
   onChildChanged(newItem) {
     this.setState((prevState) => ({
-      tickets: prevState.tickets.concat(
+      todos: prevState.todos.concat(
         {
           id: uuid.v4(),
           text: newItem.text
@@ -25,7 +25,7 @@ class App extends Component {
 
   componentDidMount() {
     this.setState({
-      tickets: [
+      todos: [
         {id: "1", text: "To Do 1"},
         {id: "2", text: "To Do 2"},
       ]
@@ -34,14 +34,14 @@ class App extends Component {
 
   componentWillUnmount() {
     this.setState({
-      tickets: []
+      todos: []
     });
   }
 
   render() {
     return (
       <div>
-        <List listItems={this.state.tickets} />
+        <List listItems={this.state.todos} />
         <Form callbackParent={this.onChildChanged} />
       </div>
     );
